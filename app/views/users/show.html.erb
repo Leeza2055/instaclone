@@ -1,0 +1,20 @@
+<%= @user.email %>
+<% @user.posts.each do |post| %>
+  <%= image_tag post.photo %>
+<% end %>
+
+<%= pluralize(@user.posts.count, 'post') %>
+<section id="all-links">
+    <% if @user.id == current_user.id %>
+        <%= link_to "Edit", edit_user_path(@user) %>
+    <% elsif current_user.followees.include?(@user) %>
+        <h5><%= button_to "Unfollow", unfollow_user_path, method: "POST" %></h5>
+    <% else %>
+        <h5><%= button_to "Follow", follow_user_path, method: "POST"  %></h5>
+    <% end%>
+    
+    <h3>Followers: <%= @user.followers.count %></h3>
+    <h3>Following: <%= @user.followees.count %></h3>
+
+    <br>
+</section>

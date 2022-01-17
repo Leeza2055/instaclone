@@ -1,0 +1,61 @@
+<%# <h2>Hello!<%= current_user&.email %>
+<%# </h2> %> 
+<% @posts.each do |post| %>
+<div class="card mb-5" style="width: 40rem; margin:auto;">
+  <div class="card-header">
+    <%= link_to post.user_email, user_path(post.user_id) %>
+    <% if current_user != nil %>
+      <% if post.user.id == current_user.id %>
+        <%= link_to 'Edit Post', edit_post_path(post.id) %>
+        <%= link_to 'Delete Post', post_path(post.id), method: :delete %>
+      <% elsif current_user.followees.include?(post.user) %>
+          <h5><%= button_to "Unfollow", unfollow_user_path(post.user.id), method: "POST" %></h5>
+      <% else %>
+          <h5><%= button_to "Follow", follow_user_path(post.user.id), method: "POST"  %></h5>
+      <% end%>
+    <% end %>
+  </div>
+  <div class="card-body">
+  <%= image_tag post.photo, class:"card-img-top small-height"%>
+    <blockquote class="blockquote mb-0">
+      <p><b><%= post.user.email%> </b><%= post.description %></p>
+      
+      <% post.comments.each do |comment| %>
+      <footer class="blockquote-footer"><b><%= link_to comment.user_email, user_path(comment.user_id) %></b> <%= comment.body %>
+      <% if comment.user == current_user || post.user == current_user %>
+      <%= link_to 'Delete', post_comment_path(post_id: post.id, id: comment.id), method: :delete %>
+      <% end %></footer>
+      <% end %>
+    </blockquote>
+  </div>
+  <div class="card-footer">
+  <span id="likes_container_<%= post.id %>">
+    <%= render partial: 'likes', locals: {post: post} %>
+  </span>
+
+  <% if current_user != nil %>
+    <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post, html: {class: 'form-horizontal' } do |f| %>
+    <%= f.input :body, label: 'Comment', placeholder: 'Add a comment...' %>
+    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+  <% end %>
+  <% end %>
+  </div>
+</div>
+<% end %>
+
+<h1>
+
+</h1>
+<h1></h1>
+
+<div id="infinite-scrolling">
+  <%= will_paginate @posts %>
+</div>
+
+<div id="my-posts">
+  <%= render partial: 'posts', locals: {posts: @posts} %>
+</div>
+
+
+  
+  

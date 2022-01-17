@@ -1,0 +1,102 @@
+// $brand-font: 'Roboto';
+$main-blue: #00497B;
+
+nav {
+  border-bottom: 1px solid #dbdbdb;
+  background-color: white;
+  height: 76px;
+}
+
+.navbar .navbar-brand {
+  // font-family: $brand-font;
+  font-size: 40px;
+  vertical-align: middle;
+  font-weight: bold;
+  color: $main-blue;
+  margin: 5px;
+  padding: 50px;
+}
+
+
+.noHover{
+  pointer-events: none;
+}
+.nav-item {
+  vertical-align: middle;
+  font-weight: 500;
+  margin: 5px;
+  padding-top: 10px;
+  // margin-left: 200px;
+  a{
+    font-size: 16px;
+  }
+}
+
+.new_post{
+  margin-left: 270px;
+}
+
+.new_post:hover {
+  opacity: 0.7;
+}
+
+
+.navbar-expand-lg .navbar-nav {
+  position: absolute;
+
+  li {
+    padding-left: 5px;
+    font-weight: 100;
+    font-size: 12px;
+  }
+}
+
+.post_like {
+  .far, .fas {
+    font-size: 20px;
+  }
+}
+
+.sb-example-1 .search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.sb-example-1 .searchTerm {
+  width: 100%;
+  border: 1px solid #d9e4e6;
+  border-right: none;
+  padding: 5px;
+  background: #d9e4e6;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: black;
+}
+.sb-example-1 .searchTerm:focus{
+  color: black;
+}
+.sb-example-1 .searchButton {
+  width: 40px;
+  height: 50px;
+  border: 1px solid#d9e4e6;
+  background: #d9e4e6;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.sb-example-1 .searchButton i{
+  color: black;
+}
+
+.sb-example-1{
+  padding-top: 10px;
+
+}
+
+.logout{
+  margin-left: 190px;
+}
+

@@ -54,3 +54,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'bcrypt', '~> 3.1', '>= 3.1.13'
+gem 'cloudinary', '~> 1.16', '>= 1.16.1'
+gem 'simple_form', '~> 5.0', '>= 5.0.2'
+gem 'acts_as_votable', '~> 0.10.0'
+
+gem "will_paginate", "~> 3.3"
+
+gem "pry-rails", "~> 0.3.9"

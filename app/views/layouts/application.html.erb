@@ -1,16 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Instaproject</title>
+    <title>Share Your Photos Online - Instapost</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag asset_path('insta.png') %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 ">
+        <div class= "row">
+          <div class="col-3">
+            <a class="navbar-brand noHover" href="/"><%= image_tag("instagram-new.webp", height: 75, width:110) %></a>
+          </div>
+            <div class="col-3 sb-example-1">
+             <div class="search">
+                <input type="text" class="searchTerm" placeholder="Search">
+                <button type="submit" class="searchButton">
+                  <i class="fa fa-search"></i>
+               </button>
+             </div>
+          </div>
+          
+          <div class="col-6">
+            <ul class="navbar-nav">
+              <% if current_user %>
+                <li class="nav-item new_post">
+                  <%= link_to image_tag("new_post.png", alt: "new post",height: 45, width: 45), new_post_path %>
+                </li>
+                <li class="nav-item logout">
+                  <button class="btn btn-danger"><%= link_to 'Log Out', logout_path, method: "delete" %></button>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <button class="btn btn-primary"><%= link_to 'Sign Up', signup_path %></button>
+                </li>
+                <li class="nav-item">
+                  <button class="btn btn-primary"><%= link_to 'Log In', login_path %></button>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </nav>
+  <%= yield %>
   </body>
 </html>
